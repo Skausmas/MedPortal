@@ -1,0 +1,35 @@
+﻿@page
+@model MedPortal.Pages.CreatedHospitalModel
+@{
+}
+<form method="post" id="createHomeForm" enctype="multipart/form-data">
+    <div class="container">
+        <div class="column">
+            <label>Название: </label>
+            <label>Тип учреждения: </label>
+            <label>Район: </label>
+            <label>Полный адрес: </label>
+            <label>Область специализации</label>
+
+        </div>
+        <div class="column">
+            <input type="text" name="Name" />
+            <input type="text" name="Type" />
+            <input type="text" name="Sector" />
+            <input type="text" name="Adress" />
+            <input type="text" name="Direction" />
+        </div>
+        <input id="send_button" type="submit" value="Добавить" />
+    </div>
+</form>
+@* 
+<script type="text/javascript">
+    document.getElementById("createHomeForm").addEventListener("submit", function (event) {
+        let elements = document.getElementById("createHomeForm").elements
+        if (elements.address.value == '' || elements.ownerName.value == '') {
+            alert("Все поля должны быть заполнены");
+            event.preventDefault();
+        }
+    }, false)
+</script> *@
+

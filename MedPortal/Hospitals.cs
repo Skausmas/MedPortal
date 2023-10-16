@@ -7,7 +7,6 @@
         public string Type { get; set; }
         public string Sector { get; set; }
         public string Adress { get; set; }
-
         public string Direction { get; set; }
 
     }
