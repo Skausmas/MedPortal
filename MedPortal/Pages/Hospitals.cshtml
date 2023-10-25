@@ -3,3 +3,15 @@
 @{
 }
 <a asp-page="CreatedHospital" style="text-decoration:none;"> Add Hospital </a>
+<div class="hospis-grid">
+    @foreach (Hospitals hospital in Model.Hospitals)
+    {
+        <div class="hospis-card">
+            <p>Название: @hospital.Name</p>
+            <p>Тип: @hospital.Type</p>
+            <p>Адрес: @hospital.Adress</p>
+            <p>Специализация: @hospital.Direction</p>
+            <a asp-page="Registration" style="text-decoration:none;"> Записаться </a>
+        </div>
+    }
+

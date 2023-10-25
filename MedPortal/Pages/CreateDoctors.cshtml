@@ -1,0 +1,33 @@
+﻿@page
+@model MedPortal.Pages.CreateDoctorsModel
+@{
+}
+<form method="post" id="createDoctorsForm" enctype="multipart/form-data">
+    <div class="container">
+        <div class="column">
+            <label>Имя: </label>
+            <label>Фамилия: </label>
+            <label>Специализация: </label>
+            <label>Опыт: </label>
+            <label>Образования</label>
+            <label>Больница</label>
+
+        </div>
+        <div class="column">
+            <input type="text" name="FirstName" />
+            <input type="text" name="LastName" />
+            <input type="text" name="Specialization" />
+            <input type="text" name="Experience" />
+            <input type="text" name="Education" />
+            <select name="HospitalId" id="hospital">
+                <option value="">Please choose an hospitals</option>
+                @foreach (Hospitals hospital in Model.Hospitals)
+
+                {
+                    <option value="Hospital"> </option>
+                }
+             </select>
+        </div>
+        <input id="send_button" type="submit" value="Добавить" />
+    </div>
+</form>

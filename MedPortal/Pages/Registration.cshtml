@@ -2,3 +2,28 @@
 @model MedPortal.Pages.RegistrationModel
 @{
 }
+<form method="post" id="createRegistrationForm" enctype="multipart/form-data">
+    <div class="container">
+        <div class="column">
+            <label>ФИО: </label>
+            <label>Больница: </label>
+            <label>Врач: </label>
+            <label>Дата: </label>
+        </div>
+        <div class="column">
+            <input type="text" name="Name" />
+            <select name="hospital" id="hospital">
+                <option value="">Please choose an hospitals</option>
+                @foreach (Hospitals hospital in Model.Hospitals)
+
+                {
+                    <option value="Hospital"> @hospital.Name </option>
+                }
+       
+            </select>
+            <input type="text" name="DoctorId"/>
+            <input type="datetime-local" name="DateVisit"/>
+        </div>
+        <input id="send_button" type="submit" value="Записаться" />
+    </div>
+</form>

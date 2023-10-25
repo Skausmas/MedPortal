@@ -14,8 +14,5 @@
         public string Diagnosis { get; set; }
 
 
-
-
-
     }
 }

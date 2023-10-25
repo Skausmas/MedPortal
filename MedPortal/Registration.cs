@@ -12,6 +12,5 @@
 
         public DateTime? DateVisit { get; set; }
 
-
     }
 }
