@@ -9,19 +9,26 @@ namespace MedPortal.Pages
     public class CreateDoctorsModel : PageModel
     {
         ApplicationContext context;
-        public List<Hospitals> Hospitals { get; private set; } = new();
+
+        [BindProperty]
+
         public Doctors doctor { get; set; } = new();
 
         public CreateDoctorsModel(ApplicationContext db)
         {
             context = db;
         }
+        public List<Hospitals> Hospitals { get; private set; } = new();
+        public void OnGet()
+        {
+            Hospitals = context.Hospitals.AsNoTracking().ToList();
+        }
         public async Task<IActionResult> OnPostAsync()
         {
             context.Doctors.Add(doctor);
             await context.SaveChangesAsync();
-            Hospitals = context.Hospitals.AsNoTracking().ToList();
             return RedirectToPage("Index");
         }
+
     }
 }

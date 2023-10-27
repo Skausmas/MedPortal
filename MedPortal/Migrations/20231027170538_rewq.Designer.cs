@@ -3,6 +3,7 @@ using System;
 using MedPortal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MedPortal.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20231027170538_rewq")]
+    partial class rewq
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -157,7 +160,7 @@ namespace MedPortal.Migrations
             modelBuilder.Entity("MedPortal.Doctors", b =>
                 {
                     b.HasOne("MedPortal.Hospitals", "Hospitals")
-                        .WithMany("Doctor")
+                        .WithMany("doctor")
                         .HasForeignKey("HospitalsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -167,7 +170,7 @@ namespace MedPortal.Migrations
 
             modelBuilder.Entity("MedPortal.Hospitals", b =>
                 {
-                    b.Navigation("Doctor");
+                    b.Navigation("doctor");
                 });
 #pragma warning restore 612, 618
         }

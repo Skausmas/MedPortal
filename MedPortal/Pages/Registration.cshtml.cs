@@ -17,5 +17,6 @@ namespace MedPortal.Pages
         {
             Hospitals = context.Hospitals.AsNoTracking().ToList();
         }
+
     }
 }
