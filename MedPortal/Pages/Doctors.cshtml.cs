@@ -16,10 +16,9 @@ namespace MedPortal.Pages
 
     public void OnGet()
         {
-            foreach (var user in context.Doctors.Include(u=>u.Hospitals).ToList())
-            {
+
                 Doctors = context.Doctors.Include(u => u.Hospitals).AsNoTracking().ToList();
-            }
+            
         }
     }
 }

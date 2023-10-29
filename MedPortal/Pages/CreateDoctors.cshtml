@@ -2,33 +2,57 @@
 @model MedPortal.Pages.CreateDoctorsModel
 @{
 }
-<form method="post" id="createDoctorsForm" enctype="multipart/form-data">
-    <div class="container">
-        <div class="column">
-            <label>Имя: </label>
-            <label>Фамилия: </label>
-            <label>Специализация: </label>
-            <label>Опыт: </label>
-            <label>Образование</label>
-            <label>Больница</label>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" />
+<div class="p-x-1 p-y-3">
+    <form class="card card-block m-x-auto bg-faded form-width" method="post" id="createHospitalForm" enctype="multipart/form-data">
+        <legend class="m-b-1 text-xs-center">Добавить врача</legend>
+        <div class="form-group input-group">
+            <span class="has-float-label">
+                <input class="form-control" id="first" type="text" placeholder="Имя" name="FirstName" />
+                <label for="first">Имя</label>
+            </span>
         </div>
-        <div class="column">
-            <input type="text" name="FirstName" />
-            <input type="text" name="LastName" />
-            <input type="text" name="Specialization" />
-            <input type="text" name="Experience" />
-            <input type="text" name="Education" />
-            <select name="HospitalsID">
-                <option value="">Please choose an hospitals</option>
-
+        <div class="form-group input-group">
+            <span class="has-float-label">
+                <input class="form-control" id="first2" type="text" placeholder="Фамилия" name="LastName" />
+                <label for="first2">Фамилия</label>
+            </span>
+        </div>
+        <div class="form-group input-group">
+            <span class="has-float-label">
+                <select class="form-control custom-select" id="spec" name="Specialization">
+                    @foreach (string spec in Model.specialist)
+                    {
+                        <option value=@spec> @spec </option>
+                    }
+                </select>
+                <label for="spec">Специализация</label>
+                <a asp-page="CreateSpecialization" style="text-decoration:none;"> Добавить специализацию </a>
+            </span>
+        </div>
+        <div class="form-group input-group">
+            <span class="has-float-label">
+                <input class="form-control" id="three" type="text" placeholder="Опыт" name="Experience" />
+                <label for="three">Опыт</label>
+            </span>
+        </div>
+        <div class="form-group input-group">
+            <span class="has-float-label">
+                <input class="form-control" id="four" type="text" placeholder="Образование" name="Education" />
+                <label for="four">Образование</label>
+            </span>
+        </div>
+        <div class="form-group has-float-label">
+            <select class="form-control custom-select" id="hospis" name="HospitalsId">
                 @foreach (Hospitals hospital in Model.Hospitals)
-
                 {
                     <option value=@hospital.Id> @hospital.Name </option>
                 }
-             </select>
+            </select>
+            <label for="hospis">Больница</label>
         </div>
-        <input id="send_button" type="submit" value="Добавить" />
-    </div>
-</form>
+        <div class="text-xs-center">
+            <button class="btn btn-block btn-primary" type="submit">Добавить</button>
+        </div>
+    </form>
+</div>

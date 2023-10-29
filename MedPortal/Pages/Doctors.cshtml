@@ -3,18 +3,23 @@
 @{
 }
 <a asp-page="CreateDoctors" style="text-decoration:none;"> Add Doctors </a>
-<div class="hospis-grid">
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
 
-    @foreach (Doctors doct in Model.Doctors)
-    {
-        <div class="hospis-card">
-            <p>Название: @doct.FirstName</p>
-            <p>Тип: @doct.LastName</p>
-            <p>Адрес: @doct.Specialization</p>
-            <p>Специализация: @doct.Experience</p>
-            <p>Больница: @doct.Hospitals?.Name</p>
-            <p>Адрес: @doct.Hospitals?.Adress</p>
-            <a asp-page="Registration" style="text-decoration:none;"> Записаться </a>
-        </div>
-   }
+<div class="container marketing">
+    <div class="row">
+        @foreach (Doctors doct in Model.Doctors)
+        {
+            <div class="col-lg-4">
+                <img src="~/img/350.jpg" class="rounded-circle" width="100" height="100" />
+                <h2>@doct.FirstName  @doct.LastName</h2>
+                <p>
+                    Специальность: @doct.Specialization
+                    <br>Опыт работы: @doct.Experience год/лет
+                    <br> @doct.Hospitals?.Name
+                    <br>Адрес: @doct.Hospitals?.Adress
+                <p> <a asp-page="Registration" class="btn btn-block btn-primary"> Записаться </a></p>
+            </div>
+        }
+    </div>
 </div>

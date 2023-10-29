@@ -2,27 +2,46 @@
 @model MedPortal.Pages.CreatedHospitalModel
 @{
 }
-<form method="post" id="createHospitalForm" enctype="multipart/form-data">
-    <div class="container">
-        <div class="column">
-            <label>Название: </label>
-            <label>Тип учреждения: </label>
-            <label>Район: </label>
-            <label>Полный адрес: </label>
-            <label>Область специализации</label>
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" />
+<div class="p-x-1 p-y-3">
+    <form class="card card-block m-x-auto bg-faded form-width" method="post" id="createHospitalForm" enctype="multipart/form-data">
+        <legend class="m-b-1 text-xs-center">Добавить больницу</legend>
+        <div class="form-group input-group">
+            <span class="has-float-label">
+                <input class="form-control" id="first" type="text" placeholder="Название" name="Name" />
+                <label for="first">Имя</label>
+            </span>
         </div>
-        <div class="column">
-            <input type="text" name="Name" />
-            <input type="text" name="Type" />
-            <input type="text" name="Sector" />
-            <input type="text" name="Adress" />
-            <input type="text" name="Direction" />
+        <div class="form-group input-group">
+            <span class="has-float-label">
+                <input class="form-control" id="first" type="text" placeholder="Тип" name="Type" />
+                <label for="first">Тип</label>
+            </span>
         </div>
-        <input id="send_button" type="submit" value="Добавить" />
-    </div>
-</form>
-@* 
+        <div class="form-group input-group">
+            <span class="has-float-label">
+                <input class="form-control" id="second" type="text" placeholder="Район" name="Sector" />
+                <label for="second">Район</label>
+            </span>
+        </div>
+        <div class="form-group input-group">
+            <span class="has-float-label">
+                <input class="form-control" id="three" type="text" placeholder="Адрес" name="Adress" />
+                <label for="three">Адрес</label>
+            </span>
+        </div>
+        <div class="form-group input-group">
+            <span class="has-float-label">
+                <input class="form-control" id="four" type="text" placeholder="Направление" name="Direction" />
+                <label for="four">Направление</label>
+            </span>
+        </div>
+        <div class="text-xs-center">
+            <button class="btn btn-block btn-primary" type="submit">Добавить</button>
+        </div>
+    </form>
+</div>
+@*
 <script type="text/javascript">
     document.getElementById("createHomeForm").addEventListener("submit", function (event) {
         let elements = document.getElementById("createHomeForm").elements
@@ -32,4 +51,3 @@
         }
     }, false)
 </script> *@
-

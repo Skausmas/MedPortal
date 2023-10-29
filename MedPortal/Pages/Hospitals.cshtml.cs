@@ -13,8 +13,10 @@ namespace MedPortal.Pages
             context = db;
         }
         public void OnGet()
+
         {
-            Hospitals = context.Hospitals.AsNoTracking().ToList();
+        Hospitals = context.Hospitals.Include(d => d.Doctor).AsNoTracking().ToList();
+           
         }
     }
 }

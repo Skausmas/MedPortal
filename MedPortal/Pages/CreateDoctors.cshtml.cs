@@ -19,9 +19,18 @@ namespace MedPortal.Pages
             context = db;
         }
         public List<Hospitals> Hospitals { get; private set; } = new();
+        public List<Specialization> Specialisation { get; private set; } = new();
+        public List<string> specialist { get; private set; } = new();
+
         public void OnGet()
         {
             Hospitals = context.Hospitals.AsNoTracking().ToList();
+            Specialisation = context.Specialization.AsNoTracking().ToList();
+            foreach(Specialization spc in Specialisation)
+            {
+                specialist.Add(spc.Name); 
+            }
+
         }
         public async Task<IActionResult> OnPostAsync()
         {
