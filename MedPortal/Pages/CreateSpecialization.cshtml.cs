@@ -17,7 +17,7 @@ namespace MedPortal.Pages
         {
             context.Specialization.Add(spec);
             await context.SaveChangesAsync();
-            return RedirectToPage("Index");
+            return RedirectToPage("CreateDoctors");
         }
     }
 }

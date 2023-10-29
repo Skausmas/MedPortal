@@ -6,7 +6,7 @@
 
         public string Name { get; set; }
 
-        public string Hospital { get; set; }
+        public string HospitalId { get; set; }
 
         public string DoctorId { get; set; }
 

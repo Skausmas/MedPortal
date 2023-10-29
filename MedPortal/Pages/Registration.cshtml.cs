@@ -9,6 +9,7 @@ namespace MedPortal.Pages
 
         ApplicationContext context;
         public List<Hospitals> Hospitals { get; private set; } = new();
+        public List<Doctors> Doctors { get; private set; } = new();
         public RegistrationModel(ApplicationContext db)
         {
             context = db;
@@ -16,6 +17,7 @@ namespace MedPortal.Pages
         public void OnGet()
         {
             Hospitals = context.Hospitals.AsNoTracking().ToList();
+            Doctors = context.Doctors.AsNoTracking().ToList();
         }
 
     }

@@ -2,14 +2,19 @@
 @model MedPortal.Pages.CreateSpecializationModel
 @{
 }
-<form method="post" id="createDoctorsForm" enctype="multipart/form-data">
-    <div class="container">
-        <div class="column">
-            <label>Название: </label>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" />
+<div class="p-x-1 p-y-3">
+    <form class="card card-block m-x-auto bg-faded form-width" method="post" id="createSpecializationForm" enctype="multipart/form-data">
+        <legend class="m-b-1 text-xs-center">Добавить специальность</legend>
+        <div class="form-group input-group">
+            <span class="has-float-label">
+                <input class="form-control" id="first" type="text" placeholder="Специальность" name="Name" />
+                <label for="first">Специальность</label>
+            </span>
         </div>
-        <div class="column">
-            <input type="text" name="Name" />
+        <div class="text-xs-center">
+            <button class="btn btn-block btn-primary" type="submit">Добавить</button>
         </div>
-        <input id="send_button" type="submit" value="Добавить" />
-    </div>
-</form>
+    </form>
+</div>
