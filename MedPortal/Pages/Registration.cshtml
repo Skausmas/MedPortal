@@ -4,47 +4,50 @@
 }
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" />
 <div class="p-x-1 p-y-3">
-    <form class="card card-block m-x-auto bg-faded form-width" method="post" id="createRegistrationForm" enctype="multipart/form-data">
-        <legend class="m-b-1 text-xs-center">Записаться на прием</legend>
-        <div class="form-group input-group">
-            <span class="has-float-label">
-                <input class="form-control" id="first" type="text" placeholder="Имя" name="FirstName" />
-                <label for="first">Имя</label>
-            </span>
-        </div>
-        <div class="form-group input-group">
-            <span class="has-float-label">
-                <select class="form-control custom-select" id="hospis" name="HospitalId">
-                    @foreach (Hospitals hospital in Model.Hospitals)
+    @if(Model.Flag)
+    {
+        <form class="card card-block m-x-auto bg-faded form-width" method="post" id="createRegistrationForm" enctype="multipart/form-data">
+            <legend class="m-b-1 text-xs-center">Записаться на прием</legend>
+            <div class="form-group input-group">
+                <span class="has-float-label">
+                    <input class="form-control" id="first" type="text" placeholder="Имя" name="FirstName" />
+                    <label for="first">Имя</label>
+                </span>
+            </div>
+            <div class="form-group input-group">
+                <span class="has-float-label">
+                    <select class="form-control custom-select" id="hospis" name="HospitalId">
+                        @foreach (Hospitals hospital in Model.Hospitals)
 
-                    {
-                        <option value=@hospital.Id> @hospital.Name </option>
-                    }
-                </select>
-                <label for="hospis"> Больница </label>
-            </span>
-        </div>
-        <div class="form-group input-group">
-            <span class="has-float-label">
-                <select class="form-control custom-select" id="doctor" name="DoctorId">
-                    @foreach (Doctors doct in Model.Doctors)
+                        {
+                            <option value=@hospital.Id> @hospital.Name </option>
+                        }
+                    </select>
+                    <label for="hospis"> Больница </label>
+                </span>
+            </div>
+            <div class="form-group input-group">
+                <span class="has-float-label">
+                    <select class="form-control custom-select" id="doctor" name="DoctorId">
+                        @foreach (Doctors doct in Model.Doctors)
 
-                    {
-                        <option value=@doct.Id> @doct.FirstName @doct.LastName </option>
-                    }
-                </select>
-                <label for="doctor"> Врач </label>
-            </span>
-        </div>
-        <div class="form-group input-group">
-            <span class="has-float-label">
-                <input type="datetime-local" id="date" name="DateVisit" />
-                <label for="date"> Время визита </label>
-            </span>
-        </div>
-        
-        <div class="text-xs-center">
-            <button class="btn btn-block btn-primary" type="submit">Добавить</button>
-        </div>
-    </form>
+                        {
+                            <option value=@doct.Id> @doct.FirstName @doct.LastName </option>
+                        }
+                    </select>
+                    <label for="doctor"> Врач </label>
+                </span>
+            </div>
+            <div class="form-group input-group">
+                <span class="has-float-label">
+                    <input type="datetime-local" id="date" name="DateVisit" />
+                    <label for="date"> Время визита </label>
+                </span>
+            </div>
+
+            <div class="text-xs-center">
+                <button class="btn btn-block btn-primary" type="submit">Добавить</button>
+            </div>
+        </form>
+    }
 </div>

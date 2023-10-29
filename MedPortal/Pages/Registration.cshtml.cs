@@ -9,6 +9,7 @@ namespace MedPortal.Pages
 
         ApplicationContext context;
         public List<Hospitals> Hospitals { get; private set; } = new();
+        public bool Flag = false;
         public List<Doctors> Doctors { get; private set; } = new();
         public RegistrationModel(ApplicationContext db)
         {
@@ -18,7 +19,12 @@ namespace MedPortal.Pages
         {
             Hospitals = context.Hospitals.AsNoTracking().ToList();
             Doctors = context.Doctors.AsNoTracking().ToList();
-        }
 
+        }
+        public async Task<IActionResult> OnPost()
+        {
+           Flag = true;
+           return RedirectToPage("Registration");
+        }
     }
 }

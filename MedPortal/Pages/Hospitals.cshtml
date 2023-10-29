@@ -15,6 +15,11 @@
                     Тип: @hospital.Type
                     <br>Адрес: @hospital.Adress
                     <br>Специализация: @hospital.Direction
+                    <br>Врачи: 
+                    @foreach (string spec in Model.UniqSpec)
+                    {
+                        <br> @spec
+                    }
                     <br> <a asp-page="Registration" class="btn btn-block btn-primary"> Записаться </a>
                 </p>
             </div>
