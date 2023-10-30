@@ -4,19 +4,23 @@
 }
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" />
 <div class="p-x-1 p-y-3">
-    @if(Model.Flag)
-    {
-        <form class="card card-block m-x-auto bg-faded form-width" method="post" id="createRegistrationForm" enctype="multipart/form-data">
+      <form class="card card-block m-x-auto bg-faded form-width" method="post" id="createRegistrationForm" enctype="multipart/form-data">
             <legend class="m-b-1 text-xs-center">Записаться на прием</legend>
             <div class="form-group input-group">
                 <span class="has-float-label">
-                    <input class="form-control" id="first" type="text" placeholder="Имя" name="FirstName" />
+                <select class="form-control custom-select" id="first" name="UserId">
+                    @foreach (User us in Model.Users)
+
+                    {
+                        <option value=@us.id> @us.Name    @us.SurName </option>
+                    }
+                </select>
                     <label for="first">Имя</label>
                 </span>
             </div>
             <div class="form-group input-group">
                 <span class="has-float-label">
-                    <select class="form-control custom-select" id="hospis" name="HospitalId">
+                <select class="form-control custom-select" id="hospis" name="HospitalId">
                         @foreach (Hospitals hospital in Model.Hospitals)
 
                         {
@@ -49,5 +53,5 @@
                 <button class="btn btn-block btn-primary" type="submit">Добавить</button>
             </div>
         </form>
-    }
+   
 </div>

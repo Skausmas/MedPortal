@@ -7,14 +7,19 @@ namespace MedPortal.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
+        public List<User> Users = new List<User>();
+
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
         }
-
-        public void OnGet()
+        async public Task OnGet([FromServices] IGetAllUsers getus)
         {
-
+            Users = await getus.GetAllUsers(); 
+        }
+         async public Task OnPost([FromServices]IFindUsers findUs, string search)
+        {
+            Users = await findUs.FindUsers(search);
         }
     }
 }
