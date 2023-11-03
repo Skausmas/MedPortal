@@ -13,7 +13,7 @@
 
         public string Education { get; set; }
 
-        public int HospitalsId { get; set; } 
-        public Hospitals? Hospitals { get; set; }
+        public int HospitalId { get; set; } 
+        public Hospital? Hospitals { get; set; }
     }
 }

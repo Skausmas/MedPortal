@@ -1,10 +1,26 @@
 ﻿@page
 @model IndexModel
+@using System.Security.Claims;
 @{
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
+@{
+    if (PageContext.HttpContext.User.Identity.IsAuthenticated)
+    {
+
+        @PageContext.HttpContext.User.FindFirst(ClaimTypes.Name).Value
+        ;
+    }
+    else
+    {
+        <a asp-page="Login">Войти</a>
+      
+    }
+    <a href="/logout">Выйти</a>
+}
+
+@* <div class="text-center">
     <h1 class="display-4">Страница медицинского портала</h1>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" />
     <div class="p-x-1 p-y-3">
@@ -44,3 +60,4 @@
     </div>
 </div>
 
+ *@

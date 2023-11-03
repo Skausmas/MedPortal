@@ -9,7 +9,7 @@ namespace MedPortal.Pages
         ApplicationContext context;
 
         [BindProperty]
-        public Hospitals hospit { get; set; } = new();
+        public Hospital hospit { get; set; } = new();
         public CreatedHospitalModel(ApplicationContext db)
         {
             context = db;

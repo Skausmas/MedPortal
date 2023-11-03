@@ -1,6 +1,6 @@
 ﻿namespace MedPortal
 {
-    public class Hospitals
+    public class Hospital
     {
         public int Id { get; set; }
         public string Name { get; set; }

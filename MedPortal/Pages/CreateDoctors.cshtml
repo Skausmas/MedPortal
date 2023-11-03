@@ -43,8 +43,8 @@
             </span>
         </div>
         <div class="form-group has-float-label">
-            <select class="form-control custom-select" id="hospis" name="HospitalsId">
-                @foreach (Hospitals hospital in Model.Hospitals)
+            <select class="form-control custom-select" id="hospis" name="HospitalId">
+                @foreach (Hospital hospital in Model.Hospitals)
                 {
                     <option value=@hospital.Id> @hospital.Name </option>
                 }

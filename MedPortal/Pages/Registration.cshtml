@@ -21,7 +21,7 @@
             <div class="form-group input-group">
                 <span class="has-float-label">
                 <select class="form-control custom-select" id="hospis" name="HospitalId">
-                        @foreach (Hospitals hospital in Model.Hospitals)
+                        @foreach (Hospital hospital in Model.Hospitals)
 
                         {
                             <option value=@hospital.Id> @hospital.Name </option>

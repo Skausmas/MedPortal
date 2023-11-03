@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Security.Claims;
 
 namespace MedPortal.Pages
 {
@@ -7,7 +10,7 @@ namespace MedPortal.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
-        public List<User> Users = new List<User>();
+        //public List<User> Users = new List<User>();
 
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -15,11 +18,11 @@ namespace MedPortal.Pages
         }
         async public Task OnGet([FromServices] IGetAllUsers getus)
         {
-            Users = await getus.GetAllUsers(); 
+            //Users = await getus.GetAllUsers(); 
         }
-         async public Task OnPost([FromServices]IFindUsers findUs, string search)
-        {
-            Users = await findUs.FindUsers(search);
-        }
+        // async public Task OnPost([FromServices]IFindUsers findUs, string search)
+        //{
+        //    //Users = await findUs.FindUsers(search);
+        //}
     }
 }

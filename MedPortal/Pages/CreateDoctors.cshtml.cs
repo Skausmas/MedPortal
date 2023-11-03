@@ -18,7 +18,7 @@ namespace MedPortal.Pages
         {
             context = db;
         }
-        public List<Hospitals> Hospitals { get; private set; } = new();
+        public List<Hospital> Hospitals { get; private set; } = new();
         public List<Specialization> Specialisation { get; private set; } = new();
         public List<string> specialist { get; private set; } = new();
 

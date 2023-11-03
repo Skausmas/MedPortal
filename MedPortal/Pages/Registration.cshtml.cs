@@ -14,9 +14,8 @@ namespace MedPortal.Pages
 
         public Registration registr { get; set; } = new();
 
-
         public List<User> Users = new List<User>();
-        public List<Hospitals> Hospitals { get; private set; } = new();
+        public List<Hospital> Hospitals { get; private set; } = new();
         public List<Doctors> Doctors { get; private set; } = new();
         public RegistrationModel(ApplicationContext db)
         {

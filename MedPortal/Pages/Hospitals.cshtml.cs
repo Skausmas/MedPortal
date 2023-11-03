@@ -7,7 +7,7 @@ namespace MedPortal.Pages
     public class HospitalsModel : PageModel
     {
         ApplicationContext context;
-        public List<Hospitals> Hospitals { get; private set; } = new();
+        public List<Hospital> Hospitals { get; private set; } = new();
         public List<HospitalSpecialization> Special { get; private set; } = new();
         public List<string> DoctorSpec { get; private set; } = new();
         public HospitalsModel(ApplicationContext db)
@@ -21,7 +21,7 @@ namespace MedPortal.Pages
             Hospitals = context.Hospitals.Include(d => d.Doctor).AsNoTracking().ToList();
 
 
-            foreach (Hospitals hospitals in Hospitals)
+            foreach (Hospital hospitals in Hospitals)
             {
                 foreach (Doctors doc in hospitals.Doctor)
                 {

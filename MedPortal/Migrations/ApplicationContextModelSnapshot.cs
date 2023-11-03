@@ -42,7 +42,7 @@ namespace MedPortal.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("HospitalsId")
+                    b.Property<int>("HospitalId")
                         .HasColumnType("integer");
 
                     b.Property<string>("LastName")
@@ -55,7 +55,7 @@ namespace MedPortal.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HospitalsId");
+                    b.HasIndex("HospitalId");
 
                     b.ToTable("Doctors");
                 });
@@ -93,7 +93,7 @@ namespace MedPortal.Migrations
                     b.ToTable("History");
                 });
 
-            modelBuilder.Entity("MedPortal.Hospitals", b =>
+            modelBuilder.Entity("MedPortal.Hospital", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -134,7 +134,7 @@ namespace MedPortal.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("DateVisit")
+                    b.Property<DateTime>("DateVisit")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("DoctorId")
@@ -173,16 +173,16 @@ namespace MedPortal.Migrations
 
             modelBuilder.Entity("MedPortal.Doctors", b =>
                 {
-                    b.HasOne("MedPortal.Hospitals", "Hospitals")
+                    b.HasOne("MedPortal.Hospital", "Hospitals")
                         .WithMany("Doctor")
-                        .HasForeignKey("HospitalsId")
+                        .HasForeignKey("HospitalId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Hospitals");
                 });
 
-            modelBuilder.Entity("MedPortal.Hospitals", b =>
+            modelBuilder.Entity("MedPortal.Hospital", b =>
                 {
                     b.Navigation("Doctor");
                 });
