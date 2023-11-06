@@ -20,7 +20,11 @@ namespace MedPortal.Pages
             {
                 return Unauthorized();
             }
-            var claims = new List<Claim> { new Claim(ClaimTypes.Name, user.Name) };
+
+            var claims = new List<Claim> { new Claim(ClaimTypes.Name, user.Name),
+                                            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                                           };
+
             ClaimsIdentity identity = new ClaimsIdentity(claims, "Cookies");
             await PageContext.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
             return RedirectToPage("Index");

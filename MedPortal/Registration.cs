@@ -6,11 +6,15 @@
 
         public string UserId { get; set; }
 
-        public string HospitalId { get; set; }
+        public int HospitalId { get; set; }
 
-        public string DoctorId { get; set; }
+        public int DoctorsId { get; set; }
 
         public DateTime DateVisit { get; set; }
+
+        public Hospital? Hospitals { get; set; }
+
+        public Doctors? Doctors { get; set; }
 
     }
 }

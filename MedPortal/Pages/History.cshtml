@@ -1,4 +1,39 @@
 ﻿@page
 @model MedPortal.Pages.HistoryModel
+@using System.Security.Claims;
 @{
+        if (PageContext.HttpContext.User.Identity.IsAuthenticated)
+    {
+
+        <div class="container marketing">
+    <div class="row">
+        @foreach (Registration histor in Model.Registrations)
+        {
+            @if (PageContext.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value == histor.UserId)
+
+            {
+                <div class="col-lg-4">
+                    <p>
+                    <hr> Больница: @histor.Hospitals?.Name
+                    <hr> @histor.Hospitals?.Adress
+                    <hr> Врач: @histor.Doctors?.FirstName @histor.Doctors?.LastName
+                    <hr> Специальность: @histor.Doctors?.Specialization
+                    <hr> Дата визита: @histor.DateVisit
+
+                    <br> <a asp-page="Registration" class="btn btn-block btn-primary"> Записаться </a>
+                </p>
+            </div>
+            }
+        }
+    </div>
+</div>
+        
+    }
+    else
+    {
+        <a asp-page="Login">Войти</a>
+        //<a href="/logout">Выйти</a>
+      
+    }
 }
+

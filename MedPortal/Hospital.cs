@@ -10,5 +10,7 @@
         public string Direction { get; set; }
         public List<Doctors> Doctor { get; set; }
 
+        public List<Registration> Registrations { get; set; }
+
     }
 }

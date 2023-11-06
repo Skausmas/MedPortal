@@ -76,15 +76,15 @@ namespace MedPortal.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Doctor")
+                    b.Property<string>("DoctorsId")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Hospital")
+                    b.Property<string>("HospitalId")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -137,19 +137,21 @@ namespace MedPortal.Migrations
                     b.Property<DateTime>("DateVisit")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("DoctorId")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("DoctorsId")
+                        .HasColumnType("integer");
 
-                    b.Property<string>("HospitalId")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("HospitalId")
+                        .HasColumnType("integer");
 
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DoctorsId");
+
+                    b.HasIndex("HospitalId");
 
                     b.ToTable("Registration");
                 });
@@ -182,9 +184,35 @@ namespace MedPortal.Migrations
                     b.Navigation("Hospitals");
                 });
 
+            modelBuilder.Entity("MedPortal.Registration", b =>
+                {
+                    b.HasOne("MedPortal.Doctors", "Doctors")
+                        .WithMany("Registrations")
+                        .HasForeignKey("DoctorsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MedPortal.Hospital", "Hospitals")
+                        .WithMany("Registrations")
+                        .HasForeignKey("HospitalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Doctors");
+
+                    b.Navigation("Hospitals");
+                });
+
+            modelBuilder.Entity("MedPortal.Doctors", b =>
+                {
+                    b.Navigation("Registrations");
+                });
+
             modelBuilder.Entity("MedPortal.Hospital", b =>
                 {
                     b.Navigation("Doctor");
+
+                    b.Navigation("Registrations");
                 });
 #pragma warning restore 612, 618
         }
