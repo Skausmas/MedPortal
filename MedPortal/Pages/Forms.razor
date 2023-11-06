@@ -1,5 +1,12 @@
-﻿@page "/Forms"
-@MedPortal.Pages.CreatedHospitalModel
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
+using System.Numerics;
+using System.Security.Claims;
+
+@page "/Forms"
+@inject ApplicationContext context
 
 <h1>Forms</h1>
 
@@ -13,5 +20,8 @@
     private List<Doctors> doctors;
     private List<Doctors> filtdoctors;
 
-    hospitals = Model.Hospitals; 
+    public List<Hospital> Hospitals { get; private set; } = new();
+
+    Hospitals = context.Hospitals.AsNoTracking().ToList();
+
 }
