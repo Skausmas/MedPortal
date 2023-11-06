@@ -12,6 +12,8 @@
 
         public DateTime DateVisit { get; set; }
 
+        public List<History> History { get; set; }
+
         public Hospital? Hospitals { get; set; }
 
         public Doctors? Doctors { get; set; }

@@ -13,6 +13,7 @@ var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(connection));
 builder.Services.AddTransient<IFindUsers, FindUser>();
 builder.Services.AddTransient<IGetAllUsers, GetAll>();
+builder.Services.AddServerSideBlazor();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
 {
     options.LoginPath = "/login";
@@ -36,6 +37,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
@@ -52,7 +55,13 @@ app.MapGet("/logout", async (HttpContext context) =>
     return ("/Index");
 });
 
+
 app.MapRazorPages();
 
+app.UseStaticFiles();
+
+app.MapBlazorHub();
+
+app.MapFallbackToPage("/_Host");
 
 app.Run();

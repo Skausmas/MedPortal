@@ -16,7 +16,7 @@
         
         async public Task<List<User>> GetAllUsers()
         {
-            object? data = await httpClient.GetFromJsonAsync<List<User>>($"http://192.168.88.30:8080/api/users");
+            object? data = await httpClient.GetFromJsonAsync<List<User>>($"http://192.168.90.10:8080/api/users");
 
             if (data is List<User> user)
             {

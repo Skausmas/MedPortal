@@ -1,0 +1,17 @@
+﻿@page "/Forms"
+@MedPortal.Pages.CreatedHospitalModel
+
+<h1>Forms</h1>
+
+<select @bind = "@selectedHospital" class="form-control">
+
+</select>
+    
+@code {
+    private int selectedHospital;
+    private List<Hospital> hospitals;
+    private List<Doctors> doctors;
+    private List<Doctors> filtdoctors;
+
+    hospitals = Model.Hospitals; 
+}

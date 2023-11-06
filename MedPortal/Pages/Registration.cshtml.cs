@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using System.Numerics;
+using System.Security.Claims;
 
 namespace MedPortal.Pages
 {
@@ -34,6 +35,7 @@ namespace MedPortal.Pages
         }
         public async Task<IActionResult> OnPost()
         {
+            registr.UserId = @PageContext.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             registr.DateVisit = registr.DateVisit.ToUniversalTime();
             context.Registration.Add(registr);
             //context.History.Add(new History(registr.UserId, registr.HospitalId, registr.DoctorId, registr.DateVisit, "графа не заполнена", "графа не заполнена"));

@@ -5,19 +5,6 @@
     ViewData["Title"] = "Home page";
 }
 
-@{
-    if (PageContext.HttpContext.User.Identity.IsAuthenticated)
-    {
-
-        @PageContext.HttpContext.User.FindFirst(ClaimTypes.Name).Value
-        ;
-    }
-    else
-    {
-        <a asp-page="Login">Войти</a>
-        //<a href="/logout">Выйти</a> 
-    }
- }
 <main class="container">
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
@@ -58,6 +45,20 @@
     </div>
   </div>
 </main>
+
+@{
+    if (PageContext.HttpContext.User.Identity.IsAuthenticated)
+    {
+
+        //@PageContext.HttpContext.User.FindFirst(ClaimTypes.Name).Value;
+        <a href="/logout">Выйти</a>
+    }
+    else
+    {
+        //<a asp-page="Login">Войти</a>
+
+    }
+}
 
 @* <div class="text-center">
     <h1 class="display-4">Страница медицинского портала</h1>
