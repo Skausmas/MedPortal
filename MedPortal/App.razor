@@ -1,0 +1,68 @@
+﻿@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Forms
+@inject IHospitalDataProvider provider
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" />
+<h1>Forms</h1>
+ <div class="form-group input-group">
+            <span class="has-float-label">
+        <select @bind="@HospitalId" class="form-control custom-select" id="hospis">
+            @foreach (var hospital in hospitals)
+            {
+                <option value="@hospital.Id">@hospital.Name</option>
+            }
+        </select>
+                <label for="hospis"> Больница </label>
+            </span>
+        </div>  
+        <p>@HospitalId</p>
+
+            <button @onclick="ShowDoctors"> Обновить </button>
+
+        <p>@HospitalId</p>
+        <div class="form-group input-group">
+            <span class="has-float-label">
+                <select class="form-control custom-select" id="doctor" name="DoctorsId">
+                    @foreach (Doctors doct in filtdoctors)
+                    {
+                        <option value=@doct.Id> @doct.FirstName @doct.LastName </option>
+                    }
+                </select>
+                <label for="doctor"> Врач </label>
+            </span>
+        </div>
+    <div class="form-group input-group">
+        <span class="has-float-label">
+            <input type="datetime-local" id="date" name="DateVisit" />
+            <label for="date"> Время визита </label>
+        </span>
+    </div>
+@code {
+    private int HospitalId;
+    private List<Hospital> hospitals;
+    private List<Doctors> doctors;
+    private List<Doctors> filtdoctors;
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        hospitals = GetHospital();
+        doctors = GetDoctors();
+        filtdoctors = doctors.Where(doc => doc.HospitalId == HospitalId).ToList();
+    }
+    public List<Hospital> GetHospital()
+    {
+        return provider.GetAllHospitals();
+    }
+    public List<Doctors> GetDoctors()
+    {
+        return provider.GetAllDoctors();
+    }
+
+    public void ShowDoctors(MouseEventArgs e)
+    {
+
+        filtdoctors = doctors.Where(doc => doc.HospitalId == HospitalId).ToList();
+    }
+
+}

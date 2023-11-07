@@ -1,9 +1,27 @@
 ﻿@page
+@namespace MedPortal.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model MedPortal.Pages.DoctorLKModel
 @{
 }
 
-<div class="container marketing">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" />
+<div class="p-x-1 p-y-3">
+    <form class="card card-block m-x-auto bg-faded form-width" method="post" id="createRegistrationForm" enctype="multipart/form-data">
+        <legend class="m-b-1 text-xs-center">Записаться на прием</legend>
+        
+        <component type="typeof(App)" render-mode="ServerPrerendered" />
+        <script src="_framework/blazor.server.js"></script>
+
+        <div class="text-xs-center">
+            <button name="button" class="btn btn-block btn-primary" type="submit">добавить</button>
+        </div>
+    </form>
+
+</div>
+
+
+@*<div class="container marketing">
     <div class="row">
         @foreach (Registration histor in Model.Registrations)
         {
@@ -22,3 +40,4 @@
         }
     </div>
 </div>
+*@

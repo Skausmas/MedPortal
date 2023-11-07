@@ -20,5 +20,6 @@ namespace MedPortal.Pages
                 Doctors = context.Doctors.Include(u => u.Hospitals).AsNoTracking().ToList();
             
         }
+
     }
 }

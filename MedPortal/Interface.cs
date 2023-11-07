@@ -1,5 +1,15 @@
-﻿namespace MedPortal
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace MedPortal
 {
+
+    public interface IHospitalDataProvider
+    {
+        public List<Hospital> GetAllHospitals();
+        public List<Doctors> GetAllDoctors();
+        public List<Doctors> FindDoctors(int id);
+    }
+
     public interface IFindUsers
     {
         public Task<List<User>> FindUsers(string name);
@@ -8,7 +18,10 @@
     public interface IGetAllUsers
     {
         Task<List<User>> GetAllUsers();
+
     }
+
+   
 
     public class GetAll : IGetAllUsers
     {

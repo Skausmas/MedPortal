@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
 using System.Numerics;
+using System.Security.Claims;
 
 namespace MedPortal.Pages
 {
@@ -9,12 +11,11 @@ namespace MedPortal.Pages
     {
         [BindProperty]
 
-        public History history { get; set; } = new();
+        public Registration registr { get; set; } = new();
 
-        
         ApplicationContext context;
 
-        public List<Registration> Registrations { get; private set; } = new();
+
         public DoctorLKModel(ApplicationContext db)
         {
             context = db;
@@ -24,18 +25,28 @@ namespace MedPortal.Pages
         public void OnGet()
         {
 
-            Registrations = context.Registration.Include(u => u.Hospitals).Include(u => u.Doctors).AsNoTracking().ToList();
-
+           
         }
-        public async Task<IActionResult> OnPostAsync()
-        {
-            history.RegistrationId = 1;
-            history.Anamnesis = "123";
-            history.Diagnosis = "123";
-            context.History.Add(history);
-            await context.SaveChangesAsync();
+        //public async Task<IActionResult> OnPostAsync()
+        //{
+        //    history.RegistrationId = 1;
+        //    history.Anamnesis = "123";
+        //    history.Diagnosis = "123";
+        //    context.History.Add(history);
+        //    await context.SaveChangesAsync();
 
-            return RedirectToPage("CreateHistory");
+        //    return RedirectToPage("CreateHistory");
+        //}
+
+        public async Task<IActionResult> OnPost()
+        {
+            registr.UserId = @PageContext.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            registr.DateVisit = registr.DateVisit.ToUniversalTime();
+            context.Registration.Add(registr);
+            //context.History.Add(new History(registr.UserId, registr.HospitalId, registr.DoctorId, registr.DateVisit, "графа не заполнена", "графа не заполнена"));
+            await context.SaveChangesAsync();
+            return RedirectToPage("Index");
         }
     }
+
 }
